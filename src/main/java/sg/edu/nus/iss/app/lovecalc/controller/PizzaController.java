@@ -41,7 +41,7 @@ public class PizzaController {
         return "index";
     }
 
-    @PostMapping(path = "/pizza/orders", consumes = "application/x-www-form-urlencoded", produces = "text/html")
+    @PostMapping(value = "/pizza", consumes = org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String processOrder(@Valid PizzaOrder pizzaOrder, BindingResult result, 
                 Model model, HttpServletResponse response){
         if(result.hasErrors()){
@@ -55,6 +55,21 @@ public class PizzaController {
         response.setStatus(HttpServletResponse.SC_CREATED);
         return "orderdelivery";
     }
+
+    // @PostMapping(value = "/pizza/orderconfirmation", consumes = org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    // public String processOrder2(@Valid PizzaOrder pizzaOrder, BindingResult result, 
+    //             Model model, HttpServletResponse response){
+    //     if(result.hasErrors()){
+    //         return "index";
+    //     }
+    //     // ctcRedisSvc.save(contact);
+    //     // model.addAttribute( "contact", contact);
+    //     model.addAttribute("pizza", pizzaOrder.getPizza());
+    //     model.addAttribute("size", pizzaOrder.getSize());
+    //     model.addAttribute("quantity", pizzaOrder.getQuantity());
+    //     response.setStatus(HttpServletResponse.SC_CREATED);
+    //     return "orderdelivery";
+    // }
     
     // @PostMapping("orderdelivery")
     // public String getAllListResult(Model model) throws IOException {

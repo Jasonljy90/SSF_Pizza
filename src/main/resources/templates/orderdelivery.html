@@ -4,51 +4,68 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
-          },
-        },
-      };
-    </script>
-    <title>Order Delivery Details</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      label {
+        display: inline-block;
+        width: 80px;
+      }
+    </style>
   </head>
-  <body data-th-object="${confirmation}">
-    <div class="flex justify-center">
-      <div class="rounded-lg shadow-lg bg-white max-w-sm">
-        <div class="p-6">
-          <h5 class="text-gray-900 text-xl font-medium mb-2">
-            Order Delivery Details
-          </h5>
-          <p class="text-gray-700 text-base mb-4" data-th-text="*{name}"></p>
-          <p class="text-gray-700 text-base mb-4" data-th-text="*{address}"></p>
-          <p class="text-gray-700 text-base mb-4" data-th-text="*{phone}"></p>
-          <input type="checkbox" id="rush" name="rush" value="Rush" />
-          <p
-            class="text-gray-700 text-base mb-4"
-            data-th-text="*{comments}"
-          ></p>
-
-          <p class="text-gray-700 text-base mb-4" data-th-text="*{result}"></p>
-        </div>
-      </div>
-    </div>
+  <body>
+      <h1>Order Delivery Details</h1>
+      <tr>
+        <td><label>Name:</label></td>
+        <td>
+          <input placeholder="placeholder" id="cname" name="cname" value="" />
+        </td>
+        <td></td>
+      </tr>
+      <br />
+      <tr>
+        <td><label>Address:</label></td>
+        <td>
+          <input
+            placeholder="placeholder"
+            id="address"
+            name="address"
+            value=""
+          />
+        </td>
+        <td></td>
+      </tr>
+      <br />
+      <tr>
+        <td><label>Phone:</label></td>
+        <td>
+          <input placeholder="placeholder" id="phone" name="phone" value="" />
+        </td>
+        <td></td>
+      </tr>
+      <br />
+      <tr>
+        <td><label>Rush:</label></td>
+        <td>
+          <input type="checkbox" id="rush1" name="rush" value="true" /><input
+            type="hidden"
+            name="_rush"
+            value="on"
+          />
+        </td>
+        <td></td>
+      </tr>
+      <br />
+      <tr>
+        <td><label for="comments">Comments:</label></td>
+        <td>
+          <textarea id="comments" name="comments"></textarea>
+        </td>
+        <td></td>
+      </tr>
+      <br />
+      <button type="button" href="/pizza/orders/confirm">Cancel Order</button>
+      <button type="submit">Place Order</button>
+    </form>
   </body>
 </html>
