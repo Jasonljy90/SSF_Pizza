@@ -1,0 +1,43 @@
+package sg.edu.nus.iss.app.lovecalc.service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Service;
+
+import sg.edu.nus.iss.app.lovecalc.model.LoverResult;
+
+
+@Qualifier("loveRedis")
+@Service
+public class LoveRedis {
+    private static final String CONTACT_ENTITY = "lovelist";
+
+    @Autowired
+    RedisTemplate<String, Object> redisTemplate;
+
+    public void save(final LoverResult loverResult){
+        redisTemplate.opsForHash()
+            .put(CONTACT_ENTITY + "_Map", loverResult.getId(), loverResult);
+    }
+
+    // public LoverResult findById(final String contactId){
+    //     LoverResult result = (LoverResult)redisTemplate.opsForHash()
+    //             .get(CONTACT_ENTITY+ "_Map", 
+    //             contactId);
+    //     return result;
+    // }
+
+    // public List<LoverResult> findAll(int startIndex){
+    //     List<Object> fromContactList = redisTemplate.opsForList()
+    //         .range(CONTACT_ENTITY, startIndex, 10);
+    //     List<LoverResult> ctcs = redisTemplate.opsForHash()
+    //         .multiGet(CONTACT_ENTITY+ "_Map", fromContactList)
+    //         .stream()
+    //         .filter(LoverResult.class::isInstance)
+    //         .map(LoverResult.class::cast)
+    //         .toList();
+        
+    //     return ctcs;
+    // }
+    
+}
